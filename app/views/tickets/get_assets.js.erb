@@ -1,0 +1,7 @@
+$("#ticket_asset_id").children().remove()
+<% @assets.each do |asset| %>
+  $("#ticket_asset_id").append(new Option("<%= asset.display_name %>", "<%= asset.id %>"));
+  if($("#ticket_asset_id").val()){
+    $("#showAssetsForTicket").removeClass("hidden");
+  }
+<% end %>   

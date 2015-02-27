@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h2><%=t '.title', :default => "Account Activation" %></h2>
+</div>
+
+<%= form_for resource, :as => resource_name, :url => update_employee_confirmation_path, :html => {:method => 'put', :class => 'form-horizontal'}, :id => 'activation-form' do |f| %>
+  <%= devise_error_messages! %>
+  
+  <% if @requires_password %>
+    <div class="control-group">
+      <%= f.label :password, :class => 'control-label' %><span class="requiredField"><%= mark_required(resource, 'password') %></span>
+      <div class="controls">
+        <%= f.password_field :password, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, :class => 'control-label' %><span class="requiredField">*</span>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, :class => 'text_field' %>
+      </div>
+    </div>
+  <% end %>
+  <%= hidden_field_tag :confirmation_token, @confirmation_token %>
+  <div class="form-actions">
+    <%= f.submit "Activate", :class => 'btn btn-primary', :onclick => "fillTagContent()" %>
+  </div> 
+  
+<% end %>

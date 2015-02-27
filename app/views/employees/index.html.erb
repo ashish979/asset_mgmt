@@ -1,0 +1,47 @@
+<div class="page-header">
+  <h2><%=t '.title', :default => (params[:type]) ? params[:type].humanize : "All" %> Employees</h2>
+</div>
+<div>
+  <span>
+    <%= link_to 'Add new Employee', new_employee_path, :class => 'btn btn-primary' %>
+    <%= link_to "Disabled Employees", employees_path('disabled'), :class => "btn btn-primary #{class_name('employees', 'index', 'disabled')}" %>
+    <%= link_to "Enabled Employees", employees_path('enabled'),  :class => "btn btn-primary #{class_name('employees', 'index', 'enabled')}" %>
+  </span>
+</div>
+<% if @employees.present? %>
+  <div id="pageEnteriesInfo" align='right'><%= page_entries_info @employees, :model => 'Employees' %></div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Admin</th>
+        <th>Employee Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td>
+            <%= form_for employee, :html => { :class => 'form-horizontal', :id => "adminStatusForm"  } do |f| %>
+              <%= f.check_box :is_admin, {:checked => employee.has_role?(:admin), :disabled => current_employee_or_employee_disabled?(employee), :id => "adminCheckBox_#{employee.id}"} %>
+              <%= f.hidden_field :name %>
+            <% end %>
+          </td>
+          <td><%= employee.employee_id %></td>
+          <td><%= link_to employee.name, employee_path(employee) %></td>
+          <td><%= employee.email %></td>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_employee_path(employee), :class => 'btn btn-medium' if employee.enabled? %> 
+            <%= show_disable_option employee %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id='pagination' align='left'><%= will_paginate @employees %></div>
+<% else %>
+  <br />
+  <strong>There are no <%= params[:type] ? params[:type].humanize : "" %> Employees</strong>
+<% end %>

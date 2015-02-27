@@ -1,0 +1,66 @@
+<tr>
+  <td class="specs-key">Asset Id</td>
+  <td class="specs-value"><%= @asset.id %></td>
+</tr>
+<tr>
+  <td class="specs-key">Name</td>
+  <td class="specs-value"><%= @asset.name %></td>
+</tr>
+<tr>
+  <td class="specs-key">Type</td>
+  <td class="specs-value"><%= @asset.asset_type.try(:name) || 'No Type' %></td>
+</tr>
+<tr>
+  <td class="specs-key">Status</td>
+  <td class="specs-value"><%= show_status @asset %></td>
+</tr>
+<tr>
+  <td class="specs-key">Cost</td>
+  <td class="specs-value"><%= number_to_currency(@asset.cost, :unit => (@asset.currency_unit == '&#8377;' ? '<span style="font-family:rupee;font-size:16px">R</span>' : @asset.currency_unit).html_safe) %></td>
+</tr>
+<tr>
+  <td class="specs-key">Serial Number</td>
+  <td class="specs-value"><%= @asset.serial_number %></td>
+</tr>
+<tr>
+  <td class="specs-key">Brand</td>
+  <td class="specs-value"><%= @asset.brand %></td>
+</tr>  
+<tr>
+  <td class="specs-key">Vendor</td>
+  <td class="specs-value"><%= @asset.vendor %></td>
+</tr>  
+<tr>
+  <td class="specs-key">Purchase date</td>
+  <td class="specs-value"><%= date_to_string @asset.purchase_date %></td>
+</tr>  
+<tr>
+  <td class="specs-key">Description</td>
+  <td class="specs-value"><%= @asset.description %></td>
+</tr>  
+<tr>
+  <td class="specs-key">Additional Info</td>
+  <td class="specs-value"><%= @asset.additional_info %></td>
+</tr>
+<tr>
+  <td class="specs-key">Location</td>
+  <td class="specs-value"><%= @asset.location %></td>
+</tr>
+<tr>
+  <td class="specs-key">Tags</td>
+  <td class="specs-value"><%= @asset.tags.present? ? @asset.tags.collect(&:name).join(', ') : '' %></td>
+</tr>
+<tr class="column-will-remove">
+  <td class="specs-key column-will-remove">Operating System</td>
+  <td class="specs-value column-will-remove"><%= @asset.operating_system %></td>
+</tr>
+<tr class="column-will-remove">
+  <td class="specs-key column-will-remove">has_bag</td>
+  <td class="specs-value column-will-remove"><%= @asset.has_bag %></td>
+</tr>
+<tr>
+  <td class="specs-key">Barcode</td>
+  <td class="specs-value" id='barcodeValue'><div id="barcodeImage"><%= @asset.get_barcode.html_safe %><br /><div id="barcodeLinkDiv" style="top: -13px;text-align: center;position: relative;display: inline-block;"><%= @asset.barcode %></div></div>
+    <div><span id="printBarcode">Print</span><span id="printBarcodeInstructions">Printing Instructions</span></div>
+    </td>
+</tr>  

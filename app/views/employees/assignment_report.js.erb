@@ -1,0 +1,3 @@
+$('div#printAssignmentReportIndex').html("<%= escape_javascript(render :partial => 'employees/detail_report')%>");
+$('div#printAssignmentReportIndex #printTableDiv').printThis();
+setTimeout(function(){$('div#printAssignmentReportIndex #printTableDiv').html("")},3000);

@@ -1,0 +1,9 @@
+<% unless params[:print] %>
+  $("#searchBox").html("<%= escape_javascript(render :partial => 'search_result') %>");
+  $("#searchBox").addClass("searchBox");
+  $('html, body').animate({ scrollTop: $('#searchBox').offset().top }, 'slow');
+  $('.alert').remove();
+<% else %>
+  $('#printSearchResult').html("<%= escape_javascript(render :partial => 'search_details') %>");
+  $('#printSearchResult table').printThis();
+<% end %>

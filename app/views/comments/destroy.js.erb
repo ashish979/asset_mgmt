@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+  $('.assetRepairComments').html("<%= escape_javascript(render :partial => 'show' )%>");
+  $('#assetCommentForm textarea[name = "history_comment[comment]"]').val('');
+  $('div#showFlashMsg').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+<% else %>
+  $('div#showFlashMsg').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+<% end %>

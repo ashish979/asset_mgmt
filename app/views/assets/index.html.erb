@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h2><%= show_name(params[:type]) %></h2>
+</div>
+<div>
+  <% if params[:asset_type_id] %>
+    <%= link_to 'Add New Asset', new_asset_type_asset_path, :class => 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Add New Asset', new_asset_path, :class => 'btn btn-primary' unless params[:type] == 'retired' %>
+  <% end %>
+</div>
+<% if @assets.present? %>
+  <div id="sortedResultOfAssets">
+    <%= render :partial => "detail" %>
+  </div>
+<% else %>
+  <br /><strong>There are no records</strong>
+<% end %>

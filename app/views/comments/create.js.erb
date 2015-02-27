@@ -1,0 +1,24 @@
+<% if flash[:notice] %>
+  $('.assetRepairComments').html("<%= escape_javascript(render :partial => 'show' )%>");
+  $('#assetCommentForm textarea[name="comment[body]"]').val('');
+  $('div#showFlashMsg').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+  $('div#error_explanation').html('');
+  $('div#assetCommentDiv').addClass('hidden');
+  $('#assetCommentLink').removeClass('highlighted');
+<% else %>
+  if($('div.ticketCommentsDiv').length > 0){
+    $('div.ticketCommentsDiv').html("<%= escape_javascript(render :partial => 'form' )%>")
+  }
+  else{
+    $('div#assetCommentDiv').removeClass('hidden');
+    $('div#assetCommentDiv').html("<%= escape_javascript(render :partial => 'form' )%>")
+    }
+<% end %>
+$('#repairCommentButton').removeAttr('disabled');
+$('#repairCommentButton').on('click');
+
+$("span#commentCreatedTime").hover(function(){
+  $(this).tooltip("show");
+    },function(){
+      $(this).tooltip("hide"); 
+}); 

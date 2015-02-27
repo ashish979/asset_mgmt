@@ -1,0 +1,96 @@
+<% unless @asset.retired? %>
+  <%= nested_form_for [@asset.asset_type, @asset], :html => { :multipart => true, :class => 'form-horizontal', :id => "fileUploadForm" } do |f| %>
+    <%= render :partial => 'shared/errors', :locals => { :obj => @asset } %>
+    <div id="multipleUploadForm">
+      <%= f.fields_for :file_uploads do |fu| %>
+        
+        <% if fu.object.new_record? %>
+          <%= fu.hidden_field :employee_id, :value => current_employee.id %>
+          <div class="control-group">
+            <%= fu.label :upload_file, :class => 'control-label' %>  
+            <div class="controls">
+              <%= fu.file_field :file, accept: 'image/jpeg, image/png, image/gif, image/jpg, application/pdf, application/docx, application/doc', :id => "file_field_input", :class => "upload_file_field" %>
+              <span class="errorInFile"></span>
+              <%= fu.link_to_remove "", :class => "icon-remove-sign" %>
+              <div id="hintText">Hint: Only pdf, doc, docx, jpeg, jpg, png, gif format are allowed with max size limit 5mb</div>
+            </div>      
+          </div>
+
+          <div class="control-group">
+            <%= fu.label :file_description, :class => 'control-label' %>  
+            <div class="controls">
+              <%= fu.text_field :description, :class => "upload_file_field" %>
+              <span class="errorInFile"></span>
+              <div id="hintText">Hint: Characters should be less than 100</div>
+            </div>
+          </div>  
+        <% end %>
+      <% end %>  
+    </div>    
+    
+    <div class="form-actions">
+      <%= f.submit "Upload", :id => "uploadFileViaAjax", :class => 'btn btn-primary' %>
+      <%= f.link_to_add "Add Another File", :file_uploads,  :data => { :target => "#multipleUploadForm" }, :class => "btn btn-primary" %>
+    </div>  
+
+  <% end %>    
+<% end %>    
+
+<% if uploaded_files.present? %>
+  <% uploaded_files.each do |file_up| %>
+    <% if file_up.persisted? %>
+      <div class="viewUploadedFile">
+        <% unless @asset.retired? %>
+          <span class="removeUploadedFile">
+            <%= link_to '', file_upload_path(file_up.id), :method => :delete, :remote => true, :class => 'icon-remove', :data => { :confirm => "Are you sure, you want to remove #{file_up.file_file_name}?"} %>
+          </span>
+        <% end %>  
+        <span class="uploadedFileDescription"><%= file_up.description %></span>
+        <span class="uploadedFileLink"><%= link_to file_up.file_file_name, file_up.file.url, target: "_blank" %></span>
+        <span class="uploadedFileTime">
+          By <%= link_to file_up.uploader_name, employee_path(file_up.uploader) %>
+          on <%= ist(file_up.file_updated_at) %>
+        </span>
+      </div>
+    <% end %>  
+  <% end %>
+<% else %>  
+  <strong>There are no files for <%= @asset.name %></strong>
+<% end %>
+<script>
+  $('#uploadFileViaAjax').parents('form').on('submit', function(e){
+    e.preventDefault();
+    var err_count = 0;
+    $.each($(".upload_file_field:visible"), function( file ) {
+      if($(this).val()){
+        $(this).next('span.errorInFile').html("");
+      }else{
+        $(this).next('span.errorInFile').html("can't be blank");
+        err_count += 1
+      }
+    });
+
+    if(err_count > 0){
+      return false;
+    }else{ 
+      var formObj = $(this);
+      var formURL = formObj.attr("action");
+      var formData = new FormData(this);
+      $.ajax({
+        url: formURL,
+        type: 'POST',
+        data: formData,
+        mimeType: "multipart/form-data",
+        dataType: 'script',
+        beforeSend: function() { showProgress() },
+        complete: function() { endProgress() },
+        contentType: false,
+        cache: false,
+        processData: false,
+      });
+      e.preventDefault();
+    }
+  });
+
+
+</script> 

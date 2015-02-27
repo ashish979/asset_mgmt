@@ -1,0 +1,23 @@
+<% if @result.present? %>
+  <div class="page-header">
+    <h2><%=t '.title', :default => "Search result" %></h2>
+  </div>
+  <div id="pageEnteriesInfo" style="float:left;display:inline;"><%= page_entries_info @result, :model => @result.first.class.to_s %></div>
+  <span id="printSearchResultLink"><%= link_to 'Print', search_path(params.deep_dup.merge!(print: true)), id: 'printSearchReport', :class => "btn btn-medium btn-primary", :remote => true %></span>
+  <br /><br />
+  <% if @result.first.kind_of?(Employee) %>
+    <% @result.each do |result| %>
+      <div><%= link_to "#{result.employee_id} #{result.name}", result %></div>  
+    <% end %> 
+  <% else %>
+    <%= render :partial => "search_details" %>
+  <% end %>
+  <div id='pagination' align='left'><%= will_paginate @result %></div>
+  <script> $('.pagination a').attr('data-remote', 'true'); </script>
+<% else %>
+  <strong>There are no matching records</strong>
+<% end %>
+
+<script>
+
+</script>

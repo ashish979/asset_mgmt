@@ -1,0 +1,27 @@
+<h3 class="showTagResult">Assets Tagged with Tag - <%= @tag.name %></h3>
+
+<div id="pageEnteriesInfo" align='right'><%= page_entries_info @assets, :model => 'Asset' %></div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Asset Id</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Assigned To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @assets.each do |asset| %>
+      <tr>
+        <td><%= asset.id %></td>
+        <td><%= link_to asset.display_name, [asset.asset_type, asset] %></td>
+        <td><%= asset.status.capitalize %></td>
+        <td><%= asset.status == "Assigned" ? (link_to asset.assigned_employee.name, asset.assigned_employee) : "-" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id='pagination'><%= will_paginate @assets %></div>
+
+<script>$('.pagination a').attr('data-remote', 'true'); </script>
+

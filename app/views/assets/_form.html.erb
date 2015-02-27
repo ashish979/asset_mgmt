@@ -1,0 +1,125 @@
+<%= nested_form_for [@asset_type, @asset], :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+  <%= render :partial => "shared/errors", :locals => { :obj => @asset } %>  
+  <div class="control-group adjustHeight">
+    <%= f.label :asset_type_id, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls adjustHeight">
+      <%= show_category @asset, f %>
+      <%= f.hidden_field :asset_type_id, :value => params[:asset_type_id] if params[:asset_type_id] %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls adjustHeight">
+      <%= show_status_field f %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :cost, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.select(:currency_unit, options_for_select(show_currency_symbol, @asset.currency_unit),:class => 'costSelect') %>&nbsp<%= f.text_field :cost %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :serial_number, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.text_field :serial_number, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :brand, :class => 'control-label' %>
+    <% if @asset.new_record? %>
+      <span class="requiredField">*</span>
+    <% end %>
+    <div class="controls">
+      <%= f.autocomplete_field :brand, autocomplete_asset_brand_assets_path %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :vendor, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.autocomplete_field :vendor, autocomplete_asset_vendor_assets_path %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :purchase_date, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.text_field :purchase_date, :class => 'text_field', :readonly => true, :value => date_to_string(f.object.purchase_date) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :additional_info, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :additional_info, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <div id='addTags' class="control-group">
+    <%= f.label :tags_field, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.autocomplete_field :tags_field, autocomplete_tag_name_assets_path %>
+      <span id='addTagButton' onclick='addTags()'>Add</span>
+      <div id='tags'></div>
+    </div>  
+  </div>
+  <% if !@asset.new_record? %>
+    <div class="control-group">
+      <div id="showFlashMsg"></div>
+      <div id="associatedTags"><%= render :partial => 'show_tag' %></div>
+    </div>
+  <% end %>  
+  
+  <div id="multipleUploadForm">
+    <%= f.fields_for :file_uploads do |fu| %>
+    
+      <% if fu.object.new_record? %>
+        <%= fu.hidden_field :employee_id, :value => current_employee.id %>
+        <div class="control-group">
+          <%= fu.label :upload_file, :class => 'control-label' %>  
+          <div class="controls">
+            <%= fu.file_field :file, accept: 'image/jpeg, image/png, image/gif, image/jpg, application/pdf, application/docx, application/doc', :id => "file_field_input" %>
+            <%= fu.link_to_remove "", :class => "icon-remove-sign" %>
+            <div id="hintText">Hint: Only pdf, doc, docx, jpeg, jpg, png, gif format are allowed with max size limit 5mb</div>
+          </div>      
+        </div>
+
+        <div class="control-group">
+          <%= fu.label :file_description, :class => 'control-label' %>  
+          <div class="controls">
+            <%= fu.text_field :description %>
+            <div id="hintText">Hint: Characters should be less than 100</div>
+          </div>      
+        </div>  
+    
+      <% end %>
+    <% end %>
+  </div>  
+  
+  <div class="uploadMoreFileDiv">
+    <%= f.link_to_add "Add Another File", :file_uploads,  :data => { :target => "#multipleUploadForm" } %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary', :onclick => "fillTagContent()" %>
+     <%= link_to 'Cancel', request.referer %>  
+  </div>
+<% end %>

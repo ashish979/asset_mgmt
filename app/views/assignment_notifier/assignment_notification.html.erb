@@ -1,0 +1,14 @@
+<body style="font-family: arial, verdana, sans-serif;font-size: 12px;line-height: 1em;">
+Hi <%= link_to @employee.name, employee_url(@admin.company.permalink, @employee), :target => "_blank", :style => "text-decoration: none;" %>,<br style="clear:both;" /><br style="clear:both;" />
+<% if @status == true %>
+  <div id="assign" style="font-size: 12px;line-height:15px;">Asset <%= link_to @asset.name, asset_url(@asset), :target => "_blank", :style => "text-decoration: none;" %> has been assigned to you. Please verify below mentioned details :</div>
+<% else %>
+  <div id="return" style="font-size: 12px;line-height:15px;">Asset <%= link_to @asset.name, asset_url(@asset), :target => "_blank", :style => "text-decoration: none;" %> has been successfully returned.</div>
+<% end %>
+<div style="padding-left:8px;line-height:15px;"><b>Name:</b> <%= @asset.name %></div>
+<div style="padding-left:8px;line-height:15px;"><b>Serial Number:</b> <%= @asset.serial_number %></div>
+<% if @asset.brand.present? %>
+  <div style="padding-left:8px;line-height:15px;"><b>Brand:</b> <%= @asset.brand %></div><br/>
+<% end %><br/>
+
+Thanks

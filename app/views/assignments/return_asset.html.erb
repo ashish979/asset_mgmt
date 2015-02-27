@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h2><%=t '.title', :default => "Return Asset" %></h2>
+</div>
+<%= form_for(@assignment) do |f| %>
+  <%= render :partial => "shared/errors", :locals => { :obj => @assignment } %>
+  <dl class="dl-horizontal">
+    <dt><strong>Employee Name:</strong></dt>
+    <dd><%= @assignment.employee.name %></dd>
+    <%= f.hidden_field :employee_id %><br />
+    <dt><strong>Asset Name:</strong></dt>
+    <dd><%= asset_name f %></dd><br />
+    <dt><strong>Issued on:</strong></dt>
+    <dd id='issued_on'><%= date_to_string @assignment.date_issued %></dd><br />
+    <dt><strong>Assignment Type:</strong></dt>
+    <dd><%= @assignment.expected_return_date? ? "Temporary" : "Permanent" %></dd><br />
+    <dt>Return date<span class="requiredField" style="float:none;clear:right;">*</span>:</dt>
+    <dd>
+    	<%= f.text_field :date_returned, :value => date_to_string(ist(Time.current)), :readonly => true %>
+    	<span id='scheduled_date'><%= " Original Return Date : <b>#{date_to_string @assignment.expected_return_date}</b>".html_safe if @assignment.expected_return_date? %></span>
+    </dd><br />
+    <% if @assignment.comments.first.body.present? %>
+      <dt><strong>Assignment Remark:</strong></dt>
+      <dd><%= @assignment.comments.first.try(:body) %></dd><br />
+    <% end %>
+    <dt><strong>Return Remark:</strong></dt>
+    <% @assignment.comments.each do|comment| %>
+      <% if comment.new_record? %>
+        <%= f.fields_for :comments, comment do |c| %>
+    	    <dd><%= c.text_area :body, :rows => 3, :columns => 80 %></dd>
+	      <% end %>  
+      <% end %>
+    <% end %>  
+  </dl>
+  <div class="form-actions">
+    <%= f.submit "Return Asset", :class => 'btn btn-primary' %>
+     <%= link_to 'Cancel', request.referer %>
+  </div>	
+<% end %>

@@ -1,0 +1,69 @@
+<div id="progressContainer" align="center"></div>
+<div class="page-header">
+  <h2><%=t '.title', :default => "Search" %></h2>
+</div>
+<%= form_tag search_path, :remote => true, :method => :get do %>
+  <div class="control-group">
+    <%= label_tag :asset, nil, :class => 'control-label, boldLableName' %>
+    <div class="controls">
+      <%= text_field_tag 'asset', '', :class => 'tags_with_autocomplete', 'data-autocompleteUrl' =>autocomplete_assets_name_assets_path, :size => 75,  :placeholder => "Name Or Serial Number" %>
+
+      <%= select_tag "status", options_for_select(Asset::STATUS), :prompt => "Select Status" %> 
+      <%= select_tag "category", options_for_select(select_category), :prompt => "Select Asset Type" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <b>Purchase between</b>
+    <div class="controls">
+      <%= text_field_tag :from, nil, :class => "text_field", :readonly => true, :placeholder => "from" %> <span id="hyphenOnSearchPage">-</span>
+      <%= text_field_tag :to, nil,:class => "text_field",:readonly => true, :placeholder => "to" %>
+    </div>
+  </div>  
+
+  <div class="control-group">
+    <%= label_tag :employee, nil, :class => 'control-label, boldLableName' %>
+    <div class="controls">
+      <%= autocomplete_field_tag 'employee', '', autocomplete_employee_name_employees_path, :size => 75 %><span class="hintText">Hint: Name / Employee Id</span>
+     </div>
+  </div>
+  <strong>Or Search Assets By Tag</strong>
+  <div class="control-group">
+    <%= label_tag :tag_name, nil, :class => 'control-label, boldLableName' %>
+    <div class="controls">
+      <%= autocomplete_field_tag 'tag', '', autocomplete_tag_name_assets_path, :size => 75 %>
+     </div>
+  </div>
+  <strong>Or Search Assets By BarCode</strong>
+  <div class="control-group">
+    <%= label_tag :barcode, nil, :class => 'control-label, boldLableName' %>
+    <div class="controls">
+      <%= text_field_tag 'barcode', nil,:autocomplete => 'off' %><span class="barcodeHintText">Hint: Focus should be on field before scanning the barcode.<br /><i>First four digits represents asset type id and rest 6 represents asset id</i></span>
+     </div>
+  </div>
+  
+  <div class="form-actions">
+    <%= submit_tag "Search", :class => 'btn btn-primary', :id => "searchFormButton", data: { disable_with: "Please wait..." } %>
+  </div>
+	<div id="searchBox"></div>
+  <div id="printSearchResult" class="hidden"></div>
+<% end %>
+<script>
+  //autosuggest asset name
+  $('.tags_with_autocomplete').autocomplete({
+    minLength: 1,
+    source: function(request, response) {
+      $.ajax({
+        url: $('.tags_with_autocomplete').data('autocompleteurl'),
+        dataType: "json",
+        data: {
+          query: request.term
+        },
+        success: function(data) {
+          response(data);
+        }
+      });
+    }
+  }).data("uiAutocomplete")._renderItem = function (ul, item) {
+    return $("<li></li>").data("item.autocomplete", item).append("<a>" + item.value + "<div style='font-size:12px;color:grey'>(Serial# " + item.serial_number + ")</div>" + "</a>").appendTo(ul);
+  };
+</script>

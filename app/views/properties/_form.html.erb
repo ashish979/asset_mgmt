@@ -1,0 +1,14 @@
+<%= form_for @property, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render :partial => "shared/errors", :locals => { :obj => @property } %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %><span class="requiredField"><%= mark_required(@property, 'name') %></span>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Add Property", :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+

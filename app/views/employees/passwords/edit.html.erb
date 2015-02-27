@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h2><%=t '.title', :default => "Change your password" %></h2>
+</div>
+
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+  <div class="control-group">
+    <%= f.label :password, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.password_field :password, :class => 'password_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :password_confirmation, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'password_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Change my password", :class => 'btn btn-primary' %>
+    <%= render :partial => "employees/shared/links" %>
+  </div>
+<% end %>

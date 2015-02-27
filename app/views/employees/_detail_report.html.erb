@@ -1,0 +1,34 @@
+<div><%= link_to 'Print', assignment_report_employees_path, id: 'printAssignmentReport', :class => "btn btn-medium btn-primary", :remote => true %></div><br style="clear:both"/><br style="clear:both"/>
+
+<div id="printTableDiv">
+<head><h3>Assignment Report</h3></head>
+<table class="table table-striped" id="printTable">
+  <thead>
+    <tr>
+      <th><span>Name</span><span class="assignmentReportHeader1">Assets</span><span class="assignmentReportHeader2">Issued On</span></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @employees.each do |emp| %>
+      <tr>
+        <% if emp.active_assignments.present? %>
+          <td>
+            <%= link_to emp.name, emp, id: "employeePrintName" %><br />
+            <% emp.active_assignments.each do|assigment| %>
+              <span class="assignedAssetName"><%= link_to assigment.asset.display_name, [assigment.asset.asset_type, assigment.asset] %> (<%= assigment.asset.barcode %>)</span>
+              <span class="assignedAssetDate"><%= date_to_string(assigment.date_issued.to_date) %></span>
+              <br />
+            <% end %>
+          </td>
+        <% else %>  
+          <td>
+            <%= link_to emp.name, emp, id: "employeePrintName" %><br />
+            <span class="assignedAssetName">There are no asset assigned</span>
+          <td>
+        <% end %>    
+      </tr>
+    <% end %>  
+  </tbody>
+</table>
+</div>

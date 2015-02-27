@@ -1,0 +1,11 @@
+<% if @asset.tags.present? %>
+  <span class='control-label'>Associated Tags</span>
+  <div class="controls">
+    <% @asset.tags.each do |tag| %>
+      <span class="associatedTags">
+        <%= link_to '', remove_tag_asset_type_asset_path(@asset.asset_type, @asset, tag_id: tag.id), :method => :delete,  :class => 'icon-remove', :remote => true,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))} %>
+        <%= tag.name %>
+      </span>
+    <% end %>
+  </div>
+<% end %>

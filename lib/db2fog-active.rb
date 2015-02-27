@@ -1,0 +1,1 @@
+require 'db2fog/lib/db2fog'

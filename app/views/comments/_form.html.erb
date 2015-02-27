@@ -1,0 +1,17 @@
+<%= form_for @comment, :html => {:id => "assetCommentForm"} do |f| %>
+  <%= render :partial => "shared/errors", :locals => { :obj => @comment } %>  
+  <div class="control-group">
+    <div class="controls">
+      <%= f.hidden_field :resource_id %>
+      <%= hidden_field_tag :resource_class, set_resource_class  %>
+      <%= f.text_area :body, :class => 'assetCommentTextArea' %>
+      <% if params[:controller] != "tickets" && params[:resource_class] != "tickets" %>
+        <%= f.submit "Add", :class => "btn btn-primary", :id => 'repairCommentButton' %>
+      <% else %>
+        <div class="form-actions">
+          <%= f.submit "Add Comment", :class => 'btn btn-primary', id: "repairCommentButton" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

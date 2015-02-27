@@ -1,0 +1,5 @@
+$('div#showFlashMsg').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+$('#fileFieldForAsset').html("<%= escape_javascript(render :partial => 'assets/upload_form' )%>");
+$(".fields:empty").remove();
+$(".fields:last").find("a.remove_nested_fields").hide();
+endProgress();

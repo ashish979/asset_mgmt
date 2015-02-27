@@ -1,0 +1,22 @@
+<% if @asset_type %>
+  $("#category").val("<%= @asset_type %>");
+  $('div#showFlashMsg').html("");
+  $("#asset_barcode").val("");
+<% else %>
+  <% if @asset.present? %>
+    $("#assignment_asset_id").children().remove()
+    <% @assets.each do |asset| %>
+      $("#assignment_asset_id").append(new Option("<%= asset.display_name %>", "<%= asset.id %>"));
+    <% end %> 
+
+    $("#assignment_asset_id").val("<%= @asset.id %>");
+    $("#category").val("<%= @asset.asset_type_id %>");
+    $('div#showFlashMsg').html("");
+    $('div#assetAssignmentError').html("");
+  <% else %>
+    $('div#showFlashMsg').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>");
+    $("#assignment_asset_id").children().remove();
+    $("#category").val("");
+    $('div#assetAssignmentError').html("");
+  <% end %>
+<% end %>

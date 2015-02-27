@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Asset Management</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag :application, :media => "all" %>
+  <%= javascript_include_tag :application %>
+  <%= csrf_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">    
+    <div class="nav-collapse">
+      <a class="brand" href="/">
+        Asset Management
+      </a>
+      <% if employee_signed_in? %>
+        <%= render partial: "layouts/nav_bar" %> 
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="progressContainer" align="center"></div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <% if employee_signed_in? && current_employee.has_role?(:admin) %>
+      <div class="span3">
+        <%= render partial: "layouts/side_bar" %> 
+      </div>
+      <div class="span9">
+        <div class="flashMessageDiv">
+          <%= render partial: "layouts/flash_message" %> 
+        </div>
+        <%= yield %>
+      </div>
+    <% else %>  
+      <div class="span12">
+          <%= render partial: "layouts/flash_message" %> 
+        <%= yield %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</body>
+</html>

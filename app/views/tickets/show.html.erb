@@ -1,0 +1,40 @@
+<h2><%= @ticket.title %></h2>
+
+<div class="ticketDetailPage">
+  <div><span style="font-weight:bold;">Type : </span><%= @ticket.ticket_type_name %></div>
+  <% unless @ticket.new_hardware? %>
+    <span style="font-weight:bold;" >Asset : </span><%= show_ticket_asset_name(@ticket) %>
+  <% end %>  
+  <div class="ticketsButton">
+    <%= show_change_state_link(@ticket) %>
+    <a class="btn btn-primary backLinkForTicket" onclick="goBack()">Back</a>
+  </div>  
+</div>
+
+<b>Description:</b>
+<div class="viewTicketDetail">
+  <span class="ticketDescription"><%= simple_format h(@ticket.description) %></span><br />
+  
+  <span id="ticketOwnerAndTime">
+    <% if  can? :read, @ticket.employee %>
+      <%= link_to @ticket.employee_name, employee_path(@ticket.employee) %>
+    <% else %>  
+      <%= @ticket.employee_name %>
+    <% end %>
+   <span id="ticketCreatedTime" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= ist(@ticket.created_at) %>"><%= time_ago_in_words(ist(@ticket.created_at)) %> ago</span>
+  </span>
+</div>
+<strong>Comments</strong>
+<div class="assetComment">
+  <div id="showFlashMsg"></div>
+  <div class="assetRepairComments">
+    <%= render :partial => "comments/show" %>
+  </div>
+  <div class="ticketCommentsDiv"><%= render 'comments/form' %></div>
+
+</div>
+
+<style>
+.changeTicketState{float: right;}
+.backLinkForTicket{float: right;margin-right: 2px;}
+</style>

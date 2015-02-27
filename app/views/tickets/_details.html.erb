@@ -1,0 +1,31 @@
+<% if defined?(@asset) && !params[:controller] == "assets" %>
+  <h2><%= @asset.display_name %> Tickets</h2>
+<% end %>
+<% if @tickets.present? %>
+  <div id="pageEnteriesInfo"><%= page_entries_info @tickets, :model => 'Ticket' %></div>
+  <div class="ticketListPageDiv">
+    <% @tickets.each do |ticket| %>
+      <div class="ticketIndexPage">
+        <div class="ticketId"><%= link_to ticket.title, ticket_path(ticket) %></div>
+        <div class="ticketInfo">
+          <% unless ticket.new_hardware? %>
+            <span><%= show_ticket_asset_name(ticket) %></span>
+          <% end %>          
+          <span class="ticketTruncatedDescription"><%= truncate(ticket.description, length: 222) %></span>
+          <% if current_employee.has_role?(:admin) %>
+            <span class="ticketEmployeeName">Submitted by <%= show_ticket_employee_name(ticket) %></span>
+          <% end %>
+          <span class="ticketSubmissionTime" id="ticketCreatedTime" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= ist(ticket.created_at) %>", id="ticketCreatedTimeLink"><%= time_ago_in_words(ist(ticket.created_at)) %> ago</span>&nbsp;
+          <span class="ticketTypeName"><%= ticket.ticket_type_name %></span>
+        </div>  
+        <div class="ticketStateChangeButton"><%= show_change_state_link(ticket) %></div>
+        
+      </div>  
+    <% end %>
+    
+    <div id='pagination'><%= will_paginate @tickets %></div>
+  </div>
+  <script>$('.pagination a').attr('data-remote', 'true'); </script>
+<% else %>
+  <br /><strong>There are no matching records</strong>
+<% end %>

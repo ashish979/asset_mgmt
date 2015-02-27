@@ -1,0 +1,3 @@
+$('#updatePropertyValue_<%= @asset_property.id %>').val("<%= escape_javascript(@asset_property.value)%>");
+$('div.flashMessageDiv').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+removeLineAndDisableEnterKey();

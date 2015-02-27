@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h2><%=t '.title', :default => "Asset Types"  %></h2>
+</div>
+<div class="assetTypeForm"><%= render 'form' %></div>
+<% if @asset_types.present? %>
+  <div id="pageEnteriesInfo" align='right'><%= page_entries_info @asset_types, :model => 'AssetTypes' %></div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Associated Groups</th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--Included in controller action-->
+      <% @asset_types.each do |asset_type| %>
+        <tr>
+          <td><%= asset_type.id %></td>
+          <td><%= link_to asset_type.name, asset_type_path(asset_type), :remote => true %></td>
+          <td><%= asset_type.property_groups.collect(&:name).join(', ') %></td>
+          <td>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        asset_type_path(asset_type),
+                        :method => :delete,
+                        :disabled => !asset_type.destroyable?,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-medium btn-danger' %>    
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id='pagination'><%= will_paginate @asset_types %></div>
+<% end %>

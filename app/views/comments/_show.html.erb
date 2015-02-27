@@ -1,0 +1,22 @@
+<% if @comments.count >= 1 %>
+  <table class="table table-striped">
+    <tbody>
+      <% @comments.each do |comment| %>
+        <% if comment.id? %>
+          <tr>
+            <td class="repairHistoryCommentColumn">
+              <div class="repairComment">
+              <% if params[:controller] != "tickets" && params[:resource_class] != "tickets" %>
+                <span class="repairHistoryDelete"><%= link_to '', comment_path(comment, resource_class: set_resource_class), :method => :delete, :remote => true, :class => 'icon-remove', :data => { :confirm => 'This comment will be deleted permanently. Are you sure want to delete it?'} %></span>
+              <% end %>
+              <%= simple_format h(comment.body) %></div>
+              <span id="repairHistoryCommenter"><%= show_commenter_name(comment) %>
+              <span id="commentCreatedTime" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="<%= ist(comment.created_at) %>"><%= time_ago_in_words(ist(comment.created_at)) %> ago</span>
+              </span>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

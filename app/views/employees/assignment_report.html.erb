@@ -1,0 +1,7 @@
+<div id="assignmentReportIndex" >
+  <div id="pageEnteriesInfoAssignment"><%= page_entries_info @employees, :model => 'Employees' %></div>
+  <%= render :partial => "employees/detail_report" %>
+  <div id='pagination'><%= will_paginate @employees %></div>
+</div>
+<div id="printAssignmentReportIndex" class="hidden">
+</div>

@@ -1,0 +1,18 @@
+<div class="well sidebar-nav">
+  <ul class="nav nav-list">
+    <li class="nav-header">View By</li>
+    <li><%= link_to 'All Assets', assets_list_path, :class => class_name("assets", "index") %></li>
+    <li><%= link_to "Retired Assets", assets_list_path('retired'), :class => class_name("assets", "index", 'retired') %></li>
+    <% if current_employee && current_employee.company.present? %>
+      <% current_employee.company.asset_types.each do |category| %>
+        <li><%= link_to category.name.pluralize, asset_type_assets_path(category.id), :class => class_name("assets", "index", category.id) if category.id? %></li>
+      <% end %>
+    <% end %>
+    <li class="nav-header">View All</li>
+    <li><%= link_to 'Employees', employees_path, :class => class_name("employees", "index") %></li>
+    <li><%= link_to 'Property Group', property_groups_path, :class => class_name("property_groups", "index") %></li>
+    <li><%= link_to 'Asset Type', asset_types_path, :class => class_name("asset_types", "index") %></li>
+    <li class="nav-header">Reports</li>
+    <li><%= link_to 'Assignment Report', assignment_report_employees_path, :class => class_name("employees", "assignment_report") %></li>
+  </ul>
+</div>

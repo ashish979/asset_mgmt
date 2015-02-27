@@ -1,0 +1,22 @@
+<body style="font-family: arial, verdana, sans-serif;font-size: 12px;line-height: 15px;">
+Hi 
+<% if @commenter.id == @comment.resource.employee_id %>
+  Admin
+<% else %>
+  <%= @comment.resource.employee_name.titleize %>
+<% end %>,
+<br style="clear:both;" /><br style="clear:both;" />
+<div id="commentmailBody" style="font-size: 12px;line-height:18px;">
+  <%= @commenter.name %> has added below mentioned comment on <%= link_to @comment.resource.title, ticket_url(@commenter.company.permalink, @comment.resource), :target => "_blank", :style => "text-decoration: none;" %> :
+  <div id="commentBody" style="font-size: 12px;line-height:normal">
+    <%= simple_format(h(@comment.body), {}, wrapper_tag: "div") %>
+  </div>
+</div>
+
+<br style="clear:both;" />
+<div id="commentDiv" style="font-size: 12px;line-height: 15px;">
+  This is a system generate email. Please do not reply to this mail.
+</div>
+<br style="clear:both;" />
+
+Thanks

@@ -1,0 +1,5 @@
+$('#ticketListPageDetails').html("<%= escape_javascript(render :partial => 'details' )%>");
+showTicketTimeToolTip();
+resetSearchForm();
+$("#state").val("<%= params[:state] %>")
+endProgress();

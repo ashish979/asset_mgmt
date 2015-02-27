@@ -1,0 +1,7 @@
+$("#assignment_asset_id").children().remove()
+<% @assets.each do |asset| %>
+	$("#assignment_asset_id").append(new Option("<%= asset.display_name %>", "<%= asset.id %>"));
+<% end %>	
+$("#asset_barcode").val("");
+$("#paramsAssetBarcode").val("");
+$('div#showFlashMsg').html("");

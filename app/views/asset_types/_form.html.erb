@@ -1,0 +1,26 @@
+<%= form_for @asset_type, :html => { :class => 'form-horizontal', :id => "xyz" } do |f| %>
+  <%= render :partial => "shared/errors", :locals => { :obj => @asset_type } %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %><span class="requiredField">*</span>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <% if @asset_type_property_groups.present? %>
+    <div class="control-group">
+      <%= f.label :property_groups, :class => 'control-label', :id => "assetTypeGroupLabel" %>
+      <div class="controls">
+        <%= f.fields_for :asset_type_property_groups, @asset_type_property_groups do |c| %>
+          <%= c.hidden_field :property_group_id %>
+          <%= c.check_box :_destroy, { :checked => attr_checked?(c), :id => "#{c.object.property_group.name}_#{c.object.property_group.id}", :class => "assetTypeGroupCheckBox" }, '0', '1'  %>
+          <label for="<%= c.object.property_group.name + "_#{c.object.property_group.id}" %>" class="assetTypeGroupCheckBoxLabel"><%= c.object.property_group.name %></label>&nbsp;
+        <% end %>    
+      </div>
+    </div>
+  <% else %>
+    <span id="assetTypeGroupLink"><%= link_to 'Click here to add property groups', property_groups_path, :class => class_name("property_groups", "index") %></span>
+  <% end %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

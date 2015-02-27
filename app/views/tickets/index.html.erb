@@ -1,0 +1,18 @@
+<h2 class='ticketHeader'><%=t '.title', :default => "Tickets"  %></h2>
+<%= link_to "Create New Ticket", new_ticket_path, :class => "btn btn-primary newTicketLink" %>
+<div class="btn-group btn-group-justified">
+  <%= link_to "All", tickets_path, :remote => true, :class => "btn btn-default tab #{tag_class_name('tickets', 'index')} remote-true-ajax-call" %>
+
+  <%= link_to "Open", tickets_path('open'), :remote => true, :class => "btn btn-default tab remote-true-ajax-call" %>
+
+  <%= link_to "Closed", tickets_path('closed'), :remote => true, :class => "btn btn-default tab remote-true-ajax-call" %>
+</div><br />
+
+<div id="ticketListPage">
+  <% if current_employee.has_role?(:admin) %>  
+    <%= render :partial => "search_form" %> 
+  <% end %>  
+  <div id="ticketListPageDetails">  
+    <%= render :partial => "details" %>
+  </div>  
+</div>

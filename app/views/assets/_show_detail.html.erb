@@ -1,0 +1,48 @@
+<div class="item_right_column">
+  <% if @asset_properties.present? && @asset_properties.pluck(:value).compact.present? %>
+    <table class="fk-specs-type2">
+      <tbody>
+        <tr><th class="group-head" colspan="2">PROPERTIES</th></tr>
+        <% @asset_properties.each do |asset_property| %>
+          <% if asset_property.value.present? %>
+            <tr>
+              <td class="specs-key"><%= asset_property.property.name %></td>
+              <td class="specs-value"><%= asset_property.value %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <br />
+    <span class="assetShowPropertyError"><strong>There are no properties for <%= @asset.name %></strong></span>
+  <% end %>
+</div>
+<div class="item_left_column">
+  <table class="fk-specs-type2">
+    <tbody>
+      <tr><th class="group-head" colspan="2">GENERAL FEATURES</th></tr>
+      <% if current_employee.has_role?(:admin) %>
+        <%= render :partial => "asset_details" %>
+      <% else %>  
+        <%= render :partial => "limited_asset_details" %>
+      <% end %>  
+    </tbody>
+  </table>
+
+<% if can? :update, Comment %>
+
+  <div class="assetComment">
+    <span><%= link_to "Add Repair History", '#', :id => 'assetCommentLink', :class => "btn btn-primary" %></span><br /><br />
+    <div id="showFlashMsg"></div>
+    <div class="hidden" id="assetCommentDiv" >
+      <%= render 'comments/form' %>
+    </div>
+    <div class="assetRepairComments">
+      <%= render :partial => "comments/show" %>
+    </div>
+  </div>
+
+<% end %>
+</div>
+<div id="printInstruction"><%= render :partial => "instruction" %> </div>

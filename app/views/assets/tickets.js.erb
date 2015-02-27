@@ -1,0 +1,6 @@
+<% if @tickets.present? %>
+  $('#assetShowPageInfo').html("<%= escape_javascript(render :partial => 'tickets/details' )%>");
+<% else %>
+  $('#assetShowPageInfo').html("<br /><b>There are no tickets</b><br />");
+<% end %>
+endProgress();

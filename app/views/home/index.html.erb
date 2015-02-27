@@ -1,0 +1,57 @@
+<% if @tags %>
+  <div id="progressContainer" align="center"></div>
+  <div class="page-header">
+    <h2><%=t '.title', :default => "All Tags"  %></h2>
+  </div>
+  <% unless @tags.empty? %>
+    <div class='TagList'>
+      <% @tags.each do |tag| %>
+        <% if tag.assets.present? %>
+          <span class='<%= tag_class tag  %>' onclick="showTag(<%= tag.id %>);">
+            <%= tag.name.humanize %>
+            <%= hidden_field_tag('url_for_show_tag', show_tag_path) %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <br /> <strong>There are no tags created yet  </strong>
+  <% end %>
+  <div id="searchBox"></div>
+<% else %>
+  <% if @assignments && @assignments.present? %>
+    <div class="header">
+      <h2>Assets Assigned to You</h2>
+    </div>
+    <div class="assetAssignedToEmployee">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Issued On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @assignments.each do|assignment| %>
+            <tr>
+              <td width="60%"><%= link_to assignment.asset.display_name, asset_type_asset_path(assignment.asset.asset_type, assignment.asset) %></td>
+
+              <td><%= date_to_string(assignment.date_issued) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>  
+  <div class="employeeInfo">
+    <dl class="dl-horizontal">
+      <dt><strong>Employee Id:</strong></dt>
+      <dd><%= current_employee.employee_id %></dd>
+      <dt><strong>Name:</strong></dt>
+      <dd><%= current_employee.name %></dd>
+      <dt><strong>Email:</strong></dt>
+      <dd><%= current_employee.email %></dd>
+    </dl>
+  </div>
+
+<% end %>

@@ -1,0 +1,39 @@
+<div id="editPropertyPage" >
+<% if @asset_property_groups.present? %>
+  <% @asset_property_groups.each do |p_group| %>
+    <% if asset_properties?(p_group) %>
+      <h4><%=t '.title', :default => "#{p_group.name.camelize}"  %> Group</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+            <th><%=t '.actions', :default => t("helpers.actions") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% group_asset_properties(p_group).each do |asset_property| %>
+            <tr>
+              <td><%= asset_property.property.name %></td>
+              <td>
+                <%= form_for asset_property, :html => { :class => 'form-horizontal', :id => "assetPropertyForm"  } do |f| %>
+                  <%= f.text_field :value, :class => 'text_field assetPropertyValue', id: "updatePropertyValue_#{asset_property.id}" %>
+                <% end %>
+              </td>
+              <td><%= link_to t('.destroy', :default => "Remove"),
+                          asset_property_path(asset_property),
+                          :method => :delete,
+                          :remote => true,
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-medium btn-danger' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="strongLine"></div>
+    <% end %>
+  <% end %>
+<% else %>
+ <br /><strong>There are no properties assigned to this asset.</strong>
+<% end %>
+</div>

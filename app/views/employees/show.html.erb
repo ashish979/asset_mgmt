@@ -1,0 +1,49 @@
+<% if @employee %>
+  <div class="page-header">
+    <h2><%=t '.title', :default => @employee.name %></h2>
+  </div>
+
+  <dl class="dl-horizontal">
+    <dt><strong>Employee Id:</strong></dt>
+    <dd><%= @employee.employee_id %></dd>
+    <dt><strong>Name:</strong></dt>
+    <dd><%= @employee.name %></dd>
+    <dt><strong>Email:</strong></dt>
+    <dd><%= @employee.email %></dd>
+  </dl>
+
+  <div class="form-actions">
+    <%= link_to 'Back', request.referer, :class => "btn" %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_employee_path(@employee), :class => 'btn' if @employee.enabled? %>
+    <%= show_disable_option @employee %> 
+  </div>
+
+
+  <% if @employee.active_assignments.present?  %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Asset Id</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @employee.active_assignments.each do |assignment| %>
+          <tr>
+            <td><%= assignment.asset.id %></td>
+            <td><%= link_to assignment.asset.name, [assignment.asset.asset_type, assignment.asset] %></td>
+            <td><%= assignment.asset.try(:asset_type).try(:name) %></td>
+            <td>
+              <%= link_to 'Return Asset', return_asset_path(:type => "asset", :id => assignment.asset.id.to_s), :class => 'btn btn-medium btn-primary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      There is no assigned assets for <strong><%=t '.title', :default => @employee.name %></strong><br />
+  <% end %><br />
+  <%= render :partial => "assignment_history" %>
+<% end %>

@@ -1,0 +1,8 @@
+<h2>Update <%=t '.title', :default => @asset.name  %></h2>
+<div class="btn-group btn-group-justified">
+  <%= link_to 'Detail', edit_asset_type_asset_path(@asset.asset_type_id, @asset), :remote => true, :class => "btn btn-default tab remote-true-ajax-call #{tag_class_name('assets', 'edit')}" %>
+  <%= link_to "Properties", asset_properties_index_path(@asset.id), remote: true, :class => "btn btn-default tab remote-true-ajax-call" %>
+</div>
+<div id="assetFormAndProperties">
+  <%= render :partial => 'form' %>
+</div>

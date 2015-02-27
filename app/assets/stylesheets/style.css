@@ -1,0 +1,178 @@
+body { }
+.navbar-inverse .nav > li > a {color: #D8D4D4;}
+a:hover { color:black; text-decoration: none;}
+#container { border:1px solid; }
+.Clear { clear:both; }
+.TagSpan:hover { color:black;  }
+.DelTag { background:#cccccc; margin:3px; cursor:pointer; padding-left:17px; background: url("../images/cross.gif") no-repeat scroll 0 0 grey; }
+.TagSpan { color:#0088CC; }
+.highlighted, .highlighted:hover { color:#F1F1F1 !important;background:#6D7B8D !important; }
+#addTagButton { color: blue; cursor: pointer; text-decoration: underline; }
+#addTagButton:hover{ cursor: pointer;color:black; text-decoration: none;}
+#notice { text-align:center; }
+.pagination a { padding: 2px 5px 2px 5px; margin: 2px; text-decoration: none; color: #000099; }
+.pagination a:hover{ color: black; }
+.pagination a:active { color: black; }
+.pagination .current { background-color: #BEBEBE; border-radius: 1em 1em 1em 1em; display: inline-block; font-style: normal; font-weight: bold; height: 1.4em; line-height: 1.5; text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8); text-align: center; width: 1.4em;}
+.pagination .disabled { padding: 2px 5px 2px 5px; margin: 2px; color: #555; }
+div.pagination,div.paginationAssets { background: none repeat scroll 0 0 #F1F1F1; border: 1px solid #E5E5E5; cursor: default; padding: 1em; text-align: center;}
+div#pageEnteriesInfo {background: none repeat scroll 0 0 #2E6AB1; color: white; margin-bottom: 0.3em; padding: 0.4em 0.6em; text-align: center;float:right;}
+.table_container { width:800px; }
+.progress { position: fixed; width: 100%; z-index: 10;  background: grey; left: 0px; top: 0px; height: 100%; opacity: 0.7; filter: alpha(opacity=40);}
+.loadingText { position: fixed; top: 40%; left: 42%; padding: 10px; background: #000; color: #fff; opacity: 1; font-size: 15px; z-index: 50;text-align: center;width: 150px;border-radius: 5px 5px 5px 5px!important; }
+.sidebar-nav { padding: 9px 0; position:fixed; left:20px; top:60px; width:20%; }
+#error_explanation { background: none repeat scroll 0 0 #F1F1F1; }
+#error_explanation li,h3 { text-align: left;}
+.TagList { background:#cccccc; padding:10px; text-align: justify; }
+.TagList .active {padding:8px; margin:8px;}
+.TagSpan { cursor:pointer; padding:8px; margin:8px;}
+.TagSizeOne { font-size:12px; }
+.TagSizeTwo { font-size:15px; }
+.TagSizeThree { font-size:18px; }
+.TagSizeFour { font-size:21px; }
+.TagSizeBig { font-size:24px; }
+.strongLine { border-bottom: 3px solid black; margin: 10px 0 10px; padding-bottom: 5px;}
+.submitButtonLink{margin: 20px;}
+.lightLine { border-bottom: 1px solid #eeeeee;; margin: 10px 0 10px; padding-bottom: 5px;}
+#asset_history{ overflow: hidden;clear: both; }
+.assetsDetails { float:left;display:inline; }
+.assetPropertyGroup { overflow: hidden;clear: both; }
+.field_with_errors{ display: inline; }
+.requiredField{ float: left;line-height: 30px;color: red;overflow: hidden;}
+/*.assetHistoryComment { overflow: hidden; float:left !important ;margin: 10px 10px 30px 0;width:98%;}*/
+.assetComment { overflow: hidden; float:left !important ;margin: 10px 10px 30px 0;width:98%;}
+.hidden { display: none;}
+/*.historyCommentTextArea { width: 340px !important;}*/
+.assetCommentTextArea { width: 340px !important;}
+.icon-remove { color: red; }
+.assetHeaderName h2 {display: inline;float: left;}
+.assetHeaderName span {float: right;padding: 1px;}
+
+/*style for tabs on show and edit page of assets*/
+.btn-group-justified {display: table;width: 100%;table-layout: fixed;border-bottom: 1px solid grey;margin: 10px;}
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {border: 1px solid grey;width: 15%;background: #F3F3F3;color: grey;margin: 1px;border-radius: 0 !important;-webkit-border-radius: 0 !important;-moz-border-radius: 0 !important;border-bottom: none;margin-bottom: 0px;margin-left: 50px;border-radius: 5px 5px 0 0!important;}
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {border: 1px solid grey;width: 15%;background: #F5F5F5;color: grey;margin: 1px;border-radius: 0 !important;-webkit-border-radius: 0 !important;-moz-border-radius: 0 !important;border-bottom: none;margin-bottom: 0px;margin-left: 1px;border-radius: 5px 5px 0 0!important;}
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {border: 1px solid grey;width: 15%;background: #F5F5F5;color: grey;margin: 1px;border-radius: 0 !important;-webkit-border-radius: 0 !important;-moz-border-radius: 0 !important;border-bottom: none;margin-bottom: 0px;margin-left: 1px;border-radius: 5px 5px 0 0!important;}
+.activeTab{background: white !important;color: black !important;padding-bottom: 5px !important; margin-bottom:-1px!important; }
+.activeTab:hover{cursor: default;}
+.btn{box-shadow: none!important;-webkit-box-shadow:none!important;-moz-box-shadow:none!important;}
+
+/*style for detail section of asset show page*/
+.fk-specs-type2 .column-will-remove { background-color: yellow !important;}
+.item_left_column {float: left;border: 0;width:50%;margin: 0;}
+.item_right_column{display: inline;float:right;width:48%;overflow: hidden;}
+.fk-specs-type2 .specs-value {background-color: #fff;border: 2px dotted #c9c9c9;border-right: 1px dotted #c9c9c9;border-left: 1px dotted #c9c9c9;padding: 10px;width:40%;color: #677279;}
+.fk-specs-type2 .specs-key {background-color: #fff;border: 2px dotted #c9c9c9;border-right: 1px dotted #c9c9c9;border-left: 1px dotted #c9c9c9;padding: 10px;width:20%;color: black;}
+.fk-specs-type2 {margin: 10px 10px 30px 0;}
+.fk-specs-type2 .group-head {background-color: #f9f9f9;border: 1px solid #f9f9f9;text-align: left;}
+
+span.hintText { padding: 10px;font-size: 12px;}
+span.barcodeHintText{ padding: 0 0 0 10px;display: inline-block;vertical-align: top;font-size: 12px; }
+#assetTypeGroupLink { margin-left: 119px;}
+.boldLableName {font-weight:bold !important;}
+.adjustHeight { padding-top: 5px !important; }
+
+@font-face {font-family: 'rupee'; src: url('rupee_foradian-1-webfont.eot'); src: local('Ã¢ËœÂº'), url(data:font/truetype;charset=utf-8;base64,AAEAAAANAIAAAwBQRkZUTVen5G0AAADcAAAAHEdERUYAQAAEAAAA+AAAACBPUy8yRQixzQAAARgAAABgY21hcGmyCE0AAAF4AAABamdhc3D//wADAAAC5AAAAAhnbHlmmuFTtAAAAuwAABAoaGVhZPOmAG0AABMUAAAANmhoZWELSAQOAAATTAAAACRobXR4KSwAAAAAE3AAAABMbG9jYUCgSLQAABO8AAAAKG1heHAAFQP+AAAT5AAAACBuYW1lWObwcQAAFAQAAAIDcG9zdCuGzNQAABYIAAAAuAAAAAEAAAAAxtQumQAAAADIadrpAAAAAMhp2uoAAQAAAA4AAAAYAAAAAAACAAEAAQASAAEABAAAAAIAAAADAigBkAAFAAgFmgUzAAABGwWaBTMAAAPRAGYCEgAAAgAFAAAAAAAAAIAAAKdQAABKAAAAAAAAAABITCAgAEAAICBfBZr+ZgDNBrQBoiAAARFBAAAAAAAFnAAAACAAAQAAAAMAAAADAAAAHAABAAAAAABkAAMAAQAAABwABABIAAAADgAIAAIABgAgAFIAoCAKIC8gX///AAAAIABSAKAgACAvIF/////j/7L/ZeAG3+LfswABAAAAAAAAAAAAAAAAAAAAAAEGAAABAAAAAAAAAAECAAAAAgAAAAAAAAAAAAAAAAAAAAEAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//8AAgABAAAAAAO0BZwD/QAAATMVMzUhFTMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVIxUjNSMVIzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNSE1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1ITUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNSECTBAYATwEBAQEBAQEBAQEBAQEBAQEBAQEBAQQ2AQEBAQEBAQEBAQEBAQEBAT0BAQEBAQEBAQEBAQEBAQEBAQEBAQECJwEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgEBAQECAQECAQIBAgECAgECAwICAgMCAwMEAwQFBAcHBAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBIAcMAwEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEsCAcEBAMDAwICAgICAgECAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAT9/AQEBAQEBAQEBAQEBAQEBAQEBAQECAGYBAQEBAQEBAQEBAQEBAgECAQIBAwICAwIEBAYFCjwBAQEBAQEBAQEBAQEBAQEBAQEBAQECAH0BZwEBAQIBAgIBAgECAQIBAgIBAgECAQIBAQEDAgECAQIBAgECAwICAwQEAQEBAgECAQICAQIBAgECAgECAQICAQEBAgQEBAMDAgIDAQICAQICAQEBAgEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBBAECAQEBAgEBAgEBAQECAQECAQEBAgEBAQIBAQIBAQEBAQIBAgEBAgEBAQIBAQECAQEBAgEBAQIBAQEBAQIBAQIBAQECAQEBAgEBAgEBAQEBAgEBAgEBAgEBAQEBAgEBAgEBAQECAQECAQEBAgEBAQECAQECAQECAQEBAQIBAQEBAgEBAQEBAQECAQEBAQIBAQECAQEBAgEBAQIBAQECAQECAQEBAgECAQEBAgEBAQIBAQIBAQEBAgEBAgEBAgEBAQECAQECAQEBAQIBAQECAQECAQEBAQIBAQIBAQEBAQIBAQECAQEBAgEBAgEBAQEBAQIBAQECAQEBAQIBAQECAQEBAQEBAgIeAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQECAQECAQICAgIDAwIHBQMCAQICAQIBAgECAQICAQIBAgEBAQEDAgIBAgEBAgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgECAQIBAgECAQIBAgECAQICAQEBAQAAAAAAQAAAAADtAWcA/0AAAEzFTM1IRUzFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUjFSMVIxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFTMVMxUzFSMVIzUjFSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUhNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNSE1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUjNSM1IzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUzNTM1MzUhAkwQGAE8BAQEBAQEBAQEBAQEBAQEBAQEBAQEENgEBAQEBAQEBAQEBAQEBAQE9AQEBAQEBAQEBAQEBAQEBAQEBAQEBAicBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQIBAQEBAgEBAgECAQIBAgIBAgMCAgIDAgMDBAMEBQQHBwQBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBASAHDAMBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBLAgHBAQDAwMCAgICAgIBAgECAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE/fwEBAQEBAQEBAQEBAQEBAQEBAQEBAgBmAQEBAQEBAQEBAQEBAQIBAgECAQMCAgMCBAQGBQo8AQEBAQEBAQEBAQEBAQEBAQEBAQEBAgB9AWcBAQECAQICAQIBAgECAQICAQIBAgECAQEBAwIBAgECAQIBAgMCAgMEBAEBAQIBAgECAgECAQIBAgIBAgECAgEBAQIEBAQDAwICAwECAgECAgEBAQIBAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQQBAgEBAQIBAQIBAQEBAgEBAgEBAQIBAQECAQECAQEBAQECAQIBAQIBAQECAQEBAgEBAQIBAQECAQEBAQECAQECAQEBAgEBAQIBAQIBAQEBAQIBAQIBAQIBAQEBAQIBAQIBAQEBAgEBAgEBAQIBAQEBAgEBAgEBAgEBAQECAQEBAQIBAQEBAQEBAgEBAQECAQEBAgEBAQIBAQECAQEBAgEBAgEBAQIBAgEBAQIBAQECAQECAQEBAQIBAQIBAQIBAQEBAgEBAgEBAQECAQEBAgEBAgEBAQECAQECAQEBAQECAQEBAgEBAQIBAQIBAQEBAQECAQEBAgEBAQECAQEBAgEBAQEBAQICHgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgEBAgECAgICAwMCBwUDAgECAgECAQIBAgECAgECAQIBAQEBAwICAQIBAQIBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQIBAgECAQIBAgECAQIBAgECAgEBAQEAAAAAAEAAAABAACTKPMBXw889QALCAAAAAAAyGna6gAAAADIadrqAAAAAAO0BZwAAAAIAAIAAAAAAAAAAQAABrT+XgDeBZwAAAAAA7QAAQAAAAAAAAAAAAAAAAAAABMD9gAAAAAAAAKqAAAB/AAAA/YAAAH8AAACzgAABZwAAALOAAAFnAAAAd4AAAFnAAAA7wAAAO8AAACzAAABHwAAAE8AAAEfAAABZwAAAAAECgQKBAoECggUCBQIFAgUCBQIFAgUCBQIFAgUCBQIFAgUCBQIFAABAAAAEwP+AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgB+AAEAAAAAABMABQAAAAMAAQQJAAAAaAAFAAMAAQQJAAEACgBtAAMAAQQJAAIADgB3AAMAAQQJAAMADgCFAAMAAQQJAAQAGgCTAAMAAQQJAAUAVgCtAAMAAQQJAAYACgEDAAMAAQQJABMACgENAAMAAQQJAMgAbgEXUnVwZWUAVAB5AHAAZQBmAGEAYwBlACAAqQAgACgAeQBvAHUAcgAgAGMAbwBtAHAAYQBuAHkAKQAuACAAMgAwADEAMAAuACAAQQBsAGwAIABSAGkAZwBoAHQAcwAgAFIAZQBzAGUAcgB2AGUAZABSAHUAcABlAGUAUgBlAGcAdQBsAGEAcgB3AGUAYgBmAG8AbgB0AFIAdQBwAGUAZQAgAFIAZQBnAHUAbABhAHIAVgBlAHIAcwBpAG8AbgAgADEALgAwADAAIABKAHUAbAB5ACAAMQA1ACwAIAAyADAAMQAwACwAIABpAG4AaQB0AGkAYQBsACAAcgBlAGwAZQBhAHMAZQBSAHUAcABlAGUAUgB1AHAAZQBlAFQAaABpAHMAIABmAG8AbgB0ACAAdwBhAHMAIABnAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAHQAaABlACAARgBvAG4AdAAgAFMAcQB1AGkAcgByAGUAbAAgAEcAZQBuAGUAcgBhAHQAbwByAC4AAAIAAAAAAAD/JwCWAAAAAAAAAAAAAAAAAAAAAAAAAAAAEwAAAAEAAgADADUBAgEDAQQBBQEGAQcBCAEJAQoBCwEMAQ0BDgEPB3VuaTAwQTAHdW5pMjAwMAd1bmkyMDAxB3VuaTIwMDIHdW5pMjAwMwd1bmkyMDA0B3VuaTIwMDUHdW5pMjAwNgd1bmkyMDA3B3VuaTIwMDgHdW5pMjAwOQd1bmkyMDBBB3VuaTIwMkYHdW5pMjA1Rg==) format('truetype'); font-weight: normal; font-style: normal;}
+
+div#barcodeLinkDiv{top: -13px;text-align: center;position: relative;display: inline-block;}
+#barcodeLinkDiv:hover, #canvas:hover, span#printBarcodeInstructions:hover , span#printBarcode:hover{ text-decoration: none;color: black;cursor: pointer;}
+#barcodeImage{ display: inline-block; text-align: center;}
+#barcodeValue { text-align: center;}
+#printBarcodeInstructions{ padding-left: 15px!important;}
+
+.associatedTags {line-height: 30px; margin-top: -1px !important;padding: 4px !important;}
+span.assetShowPropertyError{ color: #c9c9c9;}
+.assetTypeGroupCheckBoxLabel { display: inline; padding-left: 6px; }
+.assetTypeGroupCheckBox { padding: 0px !important; margin: -1px !important; }
+/*.assetName{ font-weight: bold; float:left;display: inline-block;}
+.assetNewValue{ font-weight: bold; width: 45%;display: inline-block;padding-left: 25px;}
+.assetOldValue{ text-align: right;padding-left: 15px;width: 45%;display: inline-block;font-weight: bold; color: grey;padding-top: 0px;padding-right: 5px;}*/
+#assetTypeGroupLabel {padding-top: 0px;}
+#assetTypeGroupLabel:hover{cursor: default;}
+.assignedAssetName{ padding-left: 100px;width: 50%; }
+.assignedAssetDate{ padding-left: 100px;width: 22%; float:right;}
+#printAssignmentReport { float:left;}
+.assignmentReportHeader1{ padding-left: 125px;}
+.assignmentReportHeader2{ float:right;padding-right: 125px;}
+/*.assetHistoryHeader1 { padding-left: 150px;}
+.assetHistoryHeader2 { float:right;padding-right: 180px; }*/
+#hyphenOnSearchPage { position: relative;top: -3px; }
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+  a#employeePrintName {color: black; font-weight: bold;}
+  #printTableDiv h3{text-align: center;}
+}
+
+/*.flashMessageDiv{float: right;width:70%;display: inline-block;padding-right: 55px;}*/
+div.span9{ float: right!important;width: 74%!important;overflow: hidden!important;}
+#asset_currency_unit { width:50px!important;}
+#asset_cost { width:152px!important;}
+input[disabled="disabled"] { background:#eeeeee!important;}
+input[readonly="readonly"]{ background: white; cursor:text;}
+#pageEnteriesInfoAssignment {background: none repeat scroll 0 0 #2E6AB1; color: white; margin-bottom: 0.3em; padding: 0.4em 0.6em; text-align: center;float:right;position: absolute;right: 50px;top:135px;}
+.printInstructionSettings {padding-left: 35px;padding-top: 2px;}
+.repairHistoryDelete{ position: absolute;top:-11px;right: 0px;text-align: right!important;display: none; }
+.repairHistoryDelete a:hover {text-decoration: none;}
+.repairComment { display: block;position: relative;padding: 0 12px 0 0;}
+td.repairHistoryCommentColumn{ padding-right: 3px!important;padding-bottom: 0px!important; }
+.table-striped td:hover .repairHistoryDelete { display: block; }
+#repairHistoryCommenter{ float: right;font-style: italic;font-weight: bold;font-size: 12px;margin-top: -12px;}
+.loginAndResetPasswordPage{ padding-left: 10%;}
+.assetBarcodeAssign { margin-left: 71px; }
+#printSearchResultLink{ float:right; }
+.ui-autocomplete{ max-height: 400px; overflow-y: auto; overflow-x: hidden;width: 220px!important; }
+
+
+.columnrowstyle{ display: inline-block; width: 100%; padding:5px 0;}
+.columnstyle1 { float: left; width:20%; font-weight: bold; word-wrap:break-word;}
+.columnstyle2 { display: block; padding: 0 39% 0 26%; vertical-align: middle; font-weight: bold; color: #666666; word-wrap:break-word;}
+.columnstyle3 { float: right; width: 37%; font-weight: bold; word-wrap:break-word;}
+th .columnstyle2 { color: #333;}
+.showTagResult{ margin-top: 20px; margin-bottom: -35px; }
+#file_field_input {color: #999;font-weight: bold; line-height: 0px !important;}
+.icon-remove-sign { color: red;font-weight: bold;font-size: 1.5em; padding-left: 5px;}
+.icon-remove-sign:hover{text-decoration: none;color: red}
+.uploadedFileDescription, .ticketDescription{padding: 2px;display: block;color: black;}
+.uploadedFileTime{font-style: italic;color: black;float: right;}
+.assetAssignedToEmployee{width: 45%;float: left;display: inline-block;}
+.employeeInfo{width: 50% !important;padding-right: 36px !important;margin-top: 35px !important;border: solid 3px black!important;float: right;border-radius: 5px;}
+.viewTicketDetail{background-color: #F1F1F1;color: #b94a48;border: 5px solid #F1F1F1;border-radius: 5px;display: block;margin-bottom: 10px;}
+#ticketCreatedTime{color: black;}
+#ticketOwnerAndTime{float: right;font-style: italic;font-weight: bold;font-size: 12px;margin-top: -17px;padding-right: 5px;}
+.input-xlarge{width: 75%!important;}
+.uploadMoreFileDiv{display: block;padding: 10px 0 0 180px;}
+.uploadMoreFileDiv a{display: inline-block;background: #eeeeee;color: black;padding: 5px 10px;border-radius: 3px;border: solid 1px #dddddd;}
+.uploadFile{margin-top: 25px;margin-bottom: 15px;}
+.removeUploadedFile { position: absolute;top:-4px;right: 0px;text-align: right!important; }
+.viewUploadedFile{background-color: #F1F1F1;color: #b94a48;border: 5px solid #F1F1F1;border-radius: 5px;display: block;margin-bottom: 10px; position: relative;padding: 0 12px 0 0;}
+.removeUploadedFile input{ position: absolute;top: 0px;right: 85px;}
+div#hintText { font-size: 10px!important;padding-left: 2px!important;}
+span.errorInFile{color: red;}
+
+.newTicketLink{float:right;margin-top: 16px;}
+.ticketHeader{float:left;}
+
+.ticketDetailPage{display: inline-block;width: 100%;padding-bottom: 10px;position: relative;line-height: 16px;}
+.ticketsButton{float: left;position: absolute;right: 0px;bottom: 10px; }
+.ticketDetailPage h4{margin: 0px;}
+#ticketListPage{margin-top: -21px!important;}
+#ticketListPageDetails{line-height: 16px;margin-top: 0px;}
+span#ticketSearchErrorSpan{margin-left: 201px;color: red;line-height: 0px;display: block;margin-top: 11px;}
+.input-large{width:250px!important;}
+form#ticketSerachForm{margin: 0 0 -10px 0 !important;}
+
+span#commentCreatedTime:hover, span#ticketCreatedTime:hover{cursor: pointer;}
+
+/*style for ticket index page*/
+div.ticketIndexPage{background-color: #E2DFDF;display: block;margin-bottom: 3px;margin-top: 5px;padding: 5px;border: 1px solid #ccc;border-radius: 3px;}
+div.ticketId{display: inline-block;width: 11%;font-size: 18px;vertical-align: middle;}
+div.ticketInfo{display: inline-block;width: 77%;vertical-align: middle;border-left:1px solid #ccc;padding-left: 10px;}
+div.ticketStateChangeButton{display: inline-block;float: right;}
+span.ticketTypeName{color: #eee;background-color: #565755;padding: 1px 5px;font-size: 12px;border-radius: 3px}
+span.ticketEmployeeName, span.ticketSubmissionTime{font-size: 12px!important;color: green!important;}
+span.ticketTruncatedDescription{display: block;color: rgba(0, 0, 0, 0.76);margin-top: 6px;margin-bottom: 2px;}
+#category{width: 120px !important;}
+div.ticketListPageDiv{padding-top: 27px;padding-bottom: 50px;}
+.ticketDescription p{margin-bottom: -5px!important;}

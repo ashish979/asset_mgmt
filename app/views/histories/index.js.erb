@@ -1,0 +1,6 @@
+$('div#assetShowPageInfo').html("<%= escape_javascript(render :partial => 'histories/history')%>");
+<% if @histories.present? %>
+  $('div#assetShowPageInfo').prepend('<h4>Assignment History</h4>');
+<% end %>
+endProgress();
+

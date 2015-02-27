@@ -1,0 +1,6 @@
+$('div.flashMessageDiv').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+<% if @employee.has_role?(:admin) %>
+  $('#adminCheckBox_<%= @employee.id %>').attr('checked','checked');
+<% else %>
+  $('#adminCheckBox_<%= @employee.id %>').attr('checked',false);
+<% end %>

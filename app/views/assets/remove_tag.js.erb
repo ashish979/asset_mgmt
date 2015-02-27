@@ -1,0 +1,5 @@
+<% if flash[:notice] %>
+  $('div#associatedTags').html("<%= escape_javascript(render :partial => 'show_tag' )%>");
+ <% end %>
+$('div#showFlashMsg').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+  

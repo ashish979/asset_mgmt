@@ -1,0 +1,11 @@
+== README
+<b>HAM</b>
+Setup
+  After cloning,
+  bundle install
+Add database.yml, auth_base_pass.yml and secret_token.rb in config directory, you can see yml.example file for hint.
+
+Run
+ bundle exec rake db:create db:migrate
+
+And you are good to go....

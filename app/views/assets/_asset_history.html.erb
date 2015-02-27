@@ -1,0 +1,79 @@
+<% if @audits.present? %>
+  <div><h4>History Of General Features</h4></div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+           <span class="columnstyle1">Name</span>
+           <span class="assetHistoryHeader2 columnstyle3">Changed Value</span>   
+           <span class="assetHistoryHeader1 columnstyle2">Previous Value</span>
+        </th>
+        <th>Changed By</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @audits.each do |audit| %>
+        <tr>
+          <td>
+          <% audit.audited_changes.each do |key, value| %>
+          <div class="columnrowstyle">
+            <% if key == 'deleted_at' && value[0].blank? %>
+              <span style='color:red;'><i>Asset has been retired</i></span></td>
+            <% elsif key == 'deleted_at' && value[1].blank? %>
+              <span style='color:red;'><i>Asset is no longer retired, it can be assigned now.</i></span></td>
+            <% elsif value[1].present? %>
+              <span class="assetName columnstyle1"><%= key.titleize %></span>
+              <% if key == 'purchase_date' %>
+              <span class="assetNewValue columnstyle3"><%= date_to_string(value[1]) %></span>
+                <span class="assetOldValue columnstyle2"><%= date_to_string(value[0]) || "-" %></span>
+                
+              <% else %>
+               <span class="assetNewValue columnstyle3"><%= value[1] %></span>
+                <span class="assetOldValue columnstyle2"><%= value[0].present? ? value[0] : "-" %></span>
+               
+              <% end %>              
+            <% end %>  
+          </div>
+          <% end %>
+          </td>
+          <td width="20%"><%= auditor_name(audit) %></td>
+          <td width="12%"><%= ist(audit.created_at) %></td>
+        </tr>
+      <% end %>  
+    </tbody>
+  </table>
+<% else %>
+  <strong>There is no history for general features</strong><br />
+<% end %>
+
+<% if @property_audits.present? %>
+  <br />
+  <h4>History Of Properties</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Previous Value</th>
+        <th>Changed Value</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @property_audits.each do |audit| %>
+        <% if audit.audited_changes['value'].is_a?(Array) %>
+          <tr>
+            <td width="28%"><%= audit.associated.name %></td>
+            <td width="30%"><%= audit.audited_changes['value'][0] || "-" %></td>
+            <td width="30%"><strong><%= audit.audited_changes['value'][1] %></strong></td>
+            <td><%= ist(audit.created_at) %></td>
+          </tr>      
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <strong>There is no history for properties</strong>
+<% end %>
+<div class="lightLine"></div>
+                         

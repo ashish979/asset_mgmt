@@ -1,0 +1,24 @@
+<body style="font-family: arial, verdana, sans-serif;font-size: 12px;">
+Hi <%= @ticket.employee_name.titleize %>,
+<br style="clear:both;" /><br style="clear:both;" />
+<div id="ticketName" style="font-size: 12px;line-height:18px;">
+  Below mentioned are the details for <%= link_to 'Ticket #' + @ticket.id.to_s, ticket_url(@ticket.company.permalink, @ticket), :target => "_blank", :style => "text-decoration: none;" %>:
+  <br style="clear:both;" />
+  <b>Type : </b><%= @ticket.ticket_type_name %>
+  <br/>
+
+  <% if @ticket.asset.present? %>
+    <b>Asset : </b><%= link_to @ticket.asset.name, asset_type_asset_url(@ticket.company.permalink, @ticket.asset.asset_type, @ticket.asset), :target => "_blank", :style => "text-decoration: none;" %>
+    <br style="clear:both;" />
+  <% end %>
+  <b>Description :</b>
+  <div id="description" style="font-size: 12px;line-height:normal"><%= simple_format(h(@ticket.description), {}, wrapper_tag: "div") %></div>
+</div>
+
+<br style="clear:both;" />
+<div id="ticketMailDiv" style="font-size: 12px;line-height: 15px;">
+  This is a system generate email. Please do not reply to this mail.
+</div>
+<br style="clear:both;" />
+
+Thanks

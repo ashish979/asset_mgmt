@@ -1,0 +1,25 @@
+<%= form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
+	<%= render :partial => "shared/errors", :locals => { :obj => @company } %>
+	<div class="control-group">
+    <%= f.label :name, :class => 'control-label' %><span class="requiredField"><%= mark_required(@company, 'name') %></span>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %><span class="requiredField"><%= mark_required(@company, 'email') %></span>
+    <div class="controls">
+      <%= f.email_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :website, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :website, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary', :onclick => "fillTagContent()" %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), companies_path, :class => 'btn' %>
+  </div>
+<% end %>

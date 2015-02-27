@@ -1,0 +1,37 @@
+<div id="pageEnteriesInfo" align='right'><%= page_entries_info @assets, :model => 'Asset' %></div><br />
+<span id="getUrlForSorting" data-url="<% request.url %>"></span>
+<table class="table table-striped table-bordered tablesorter" id="sortAssetTable">
+  <thead>
+    <tr>
+      <th width="9%" id="idSortAsset" class="header" data-sort="<%= sorting_condition('id', params[:sort]) %>" data-type="<%= params[:type] %>" data-page="<%= params[:page] || 1 %>">Asset Id</th>  
+      <th id="nameSortAsset" class="header" data-sort="<%= sorting_condition('name', params[:sort]) %>" data-type="<%= params[:type] %>" data-page="<%= params[:page] || 1 %>">Name</th>   
+      <th width="8%" id="statusSortAsset" class="header" data-sort="<%= sorting_condition('status', params[:sort]) %>" data-type="<%= params[:type] %>" data-page="<%= params[:page] || 1 %>">Status</th>
+      <% unless params[:type] == 'retired' %>
+        <th width="12%" id="employeeNameSortAsset" class="header" data-sort="<%= sorting_condition('employees.name', params[:sort]) %>" data-type="<%= params[:type] %>" data-page="<%= params[:page] || 1 %>">Assigned To</th> 
+      <% end %>
+      <th width="14%" id="purchasedateSortAsset" class="header" data-sort="<%= sorting_condition('purchase_date', params[:sort]) %>" data-type="<%= params[:type] %>" data-page="<%= params[:page] || 1 %>">Purchase Date</th>
+      <th width="36%"><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @assets.each do |asset| %>
+      <tr>
+        <td><%= asset.id %></td>
+        <td><%= link_to asset.name, [asset.asset_type, asset] %></td>
+        <td><%= asset.status.capitalize %></td>
+        <% unless params[:type] == 'retired' %>
+          <td><%= asset.status == "Assigned" ? (link_to asset.active_assigned_employee.name, asset.active_assigned_employee) : "-" %></td>
+        <% end %>
+        <td><%= date_to_string(asset.purchase_date) %></td>
+        <td>
+          <% unless asset.retired? %>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_asset_type_asset_path(asset.asset_type_id, asset), :class => 'btn btn-medium' %>
+            <%= link_to 'Return Asset', return_asset_path(:type => "asset", :id => asset.id.to_s), :class => 'btn return_asset', :disabled => !(asset.status == "Assigned") %>
+          <% end %>
+          <%= link_to "Assignment History", histories_path(:type => "asset", :id => asset.id), :class => 'btn' unless asset.assignments.blank? %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div id='pagination'><%= will_paginate @assets %></div>

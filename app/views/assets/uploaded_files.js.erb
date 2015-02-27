@@ -1,0 +1,4 @@
+$('#assetShowPageInfo').html("<%= escape_javascript(render :partial => 'uploaded_files_links' )%>");
+$(".fields:empty").remove();
+$(".fields:last").find("a.remove_nested_fields").hide();
+endProgress();

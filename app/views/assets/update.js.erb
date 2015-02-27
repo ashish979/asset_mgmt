@@ -1,0 +1,8 @@
+<% if flash[:notice] %>
+  $('div#showFlashMsg').html("<%= escape_javascript(render :partial => 'layouts/flash_message')%>")
+  $("#fileFieldForAsset").html("<%= escape_javascript(render :partial => 'upload_form' )%>");
+  $("#errorMessages").html("");
+<% else %>  
+  $("#errorMessages").html("<%= escape_javascript(render :partial => 'shared/errors', locals: {obj: @asset} )%>");
+  $('div#showFlashMsg').html("")
+<% end %>

@@ -1,0 +1,24 @@
+<tr>
+  <td class="specs-key">Asset Id</td>
+  <td class="specs-value"><%= @asset.id %></td>
+</tr>
+<tr>
+  <td class="specs-key">Name</td>
+  <td class="specs-value"><%= @asset.name %></td>
+</tr>
+<tr>
+  <td class="specs-key">Type</td>
+  <td class="specs-value"><%= @asset.asset_type.try(:name) || 'No Type' %></td>
+</tr>
+<tr>
+  <td class="specs-key">Serial Number</td>
+  <td class="specs-value"><%= @asset.serial_number %></td>
+</tr>
+<tr>
+  <td class="specs-key">Brand</td>
+  <td class="specs-value"><%= @asset.brand %></td>
+</tr>  
+<tr>
+  <td class="specs-key">Description</td>
+  <td class="specs-value"><%= @asset.description %></td>
+</tr>  

@@ -1,0 +1,15 @@
+<p>Welcome <%= @resource.email %>!</p>
+
+<p>Congratulations you are just one step ahead before getting started with HAM( Hardware and assets mangement). 
+Click on the below link to confirm your account and get started.</p>
+
+<p><%= link_to 'Confirm my account!!', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p><strong>Company Details: </strong><br />
+Name : <%= @resource.company.name %><br />
+Email : <%= @resource.company.email %><br />
+<% if @resource.company.website.present? %>
+Website : <%= link_to @resource.company.website, @resource.company.website, :target => "_blank" %>
+<% end %></p>
+
+This is the automatic account creation e-mail from ham.vinsol.com. Please do not reply to this mail.

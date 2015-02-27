@@ -1,0 +1,29 @@
+<% if @history.present? %>
+  <b>Assignment History</b><br />
+  <table class="table table-striped">
+    <thead>
+      <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Issued On</th>
+      <th>Returned On</th>
+      <th>Type</th>
+      <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @history.each do |history| %>
+      <tr>
+        <td><%= history.asset_id %></td>
+        <td><%= show_asset_name(history) %></td>
+        <td width="120px"><%= date_to_string history.date_issued %></td>
+        <td width="120px"><%= date_to_string history.date_returned %></td>
+        <td><%= history.expected_return_date? ? "Temporary" : "Permanent" %></td>
+        <td><%= history.returned? ? "Returned" : "Assigned" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <b>There is no assignment history</b>
+<% end %>
