@@ -18,7 +18,6 @@
 /config/initializers/secret_token.rb
 ._*.*
 *.DS_Store
-.rvmrc
 public/barcodes/*.png
 *.swp
 *.swo
