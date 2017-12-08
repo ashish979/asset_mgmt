@@ -2,7 +2,7 @@ require 'soft_deletion'
 
 class Employee < ActiveRecord::Base
   # FIXME this devise method will move into concerns employee/devisable.rb, facing some issue, need to look into it and then fix.
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   include Devisable
   include ManageRole

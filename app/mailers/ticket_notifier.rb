@@ -1,5 +1,5 @@
 class TicketNotifier < ActionMailer::Base
-  default :from => "hr@vinsol.com"
+  default :from => "it@payu.in"
 
   def ticket_creation_notification(ticket)
     @ticket = ticket

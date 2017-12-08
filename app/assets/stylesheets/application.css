@@ -18,8 +18,7 @@
  *= require calendar_date_select/red 
  *= require calendar_date_select/silver 
  *= require style
- * require jquery_calender
- *= require jquery.ui.autocomplete
- *= require jquery.ui.theme 
- *= require jquery.ui.datepicker
+ *= require jquery-ui/autocomplete
+ *= require jquery-ui/theme
+ *= require jquery-ui/datepicker
  */

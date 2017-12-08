@@ -16,8 +16,8 @@
 //= require external/jquery-ui
 //= require autocomplete-rails
 //= require external/autocomplete-rails.js
-//= require jquery.ui.datepicker
-//= require jquery.ui.autocomplete
+//= require jquery-ui/widgets/datepicker
+//= require jquery-ui/widgets/autocomplete
 //= require turbolinks
 //= require jquery.turbolinks
 //= require twitter/bootstrap

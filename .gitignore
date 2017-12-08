@@ -28,3 +28,6 @@ public/barcodes/*.png
 /public/system
 /zeus.json
 /custom_plan.rb
+.idea
+public
+email_credentials.txt

@@ -7,7 +7,7 @@ gem 'devise', '3.0.0.rc'
 gem 'date_validator'
 gem "soft_deletion", "~> 0.4.4"
 gem 'sendgrid'
-gem 'airbrake'
+gem 'airbrake', '~> 4.3'
 gem 'whenever', :require => false
 gem 'barby'
 gem 'chunky_png'
@@ -22,8 +22,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
-gem 'less-rails'
-gem "twitter-bootstrap-rails"
+gem "less-rails", "~> 2.8.0"
+gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'delayed_job_active_record'
 gem "daemons"
 #gem "fog"
@@ -51,4 +51,3 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'debugger', group: [:development, :test]
