@@ -1,0 +1,7 @@
+development:
+  name: 'abcdef'
+  password: 'abcdef'
+
+production:
+  name: 'abcdef'
+  password: 'abcdef'

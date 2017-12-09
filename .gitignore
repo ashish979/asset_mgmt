@@ -14,8 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/config/auth_base_pass.yml
-/config/initializers/secret_token.rb
 ._*.*
 *.DS_Store
 public/barcodes/*.png
