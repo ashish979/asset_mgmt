@@ -5,6 +5,7 @@ ruby '2.2.8'
 gem 'rails', '4.0.2'
 
 gem 'mysql2', '~> 0.3.11'
+gem 'pg'
 gem 'devise', '3.0.0.rc'
 gem 'date_validator'
 gem "soft_deletion", "~> 0.4.4"
